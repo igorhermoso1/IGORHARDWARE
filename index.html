@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IGORHARDWARE — Aprende Sistemas Microinformáticos y Redes con Igor. Hardware, BIOS, RAM, CPU, GPU, montaje, SO, redes y mucho más.">
+  <title>🐦 IGORHARDWARE · Aprende hardware con Igor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23c87e3c'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle'%3E🐦%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Botón móvil -->
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">☰</button>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">🐦</div>
+        <div>
+          <div class="brand-name">IGORHARDWARE</div>
+          <div class="brand-sub">Aprende con Igor</div>
+        </div>
+      </div>
+
+      <!-- Stats compactas -->
+      <div class="sidebar-stats">
+        <div class="stat-mini">
+          <span class="stat-mini-val" id="statPoints">0</span>
+          <span class="stat-mini-label">IgorCoins</span>
+        </div>
+        <div class="stat-mini">
+          <span class="stat-mini-val" id="statLevel">1</span>
+          <span class="stat-mini-label">Nivel</span>
+        </div>
+        <div class="stat-mini">
+          <span class="stat-mini-val" id="statDone">0</span>
+          <span class="stat-mini-label">Hechos</span>
+        </div>
+        <div class="stat-mini">
+          <span class="stat-mini-val" id="statStreak">0</span>
+          <span class="stat-mini-label">🔥 Racha</span>
+        </div>
+      </div>
+
+      <!-- Progreso general -->
+      <div class="sidebar-progress">
+        <div class="sidebar-progress-label">
+          <span>Progreso total</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Nav principal -->
+      <div class="nav-group">
+        <div class="nav-title">📍 Inicio</div>
+        <div class="nav-item active" data-route="dashboard">
+          <span class="nav-item-icon">🏠</span>
+          <span>Dashboard</span>
+        </div>
+        <div class="nav-item" data-route="levels">
+          <span class="nav-item-icon">🎖</span>
+          <span>Niveles y XP</span>
+        </div>
+        <div class="nav-item" data-route="rewards">
+          <span class="nav-item-icon">🎁</span>
+          <span>Recompensas</span>
+        </div>
+        <div class="nav-item" data-route="achievements">
+          <span class="nav-item-icon">🏅</span>
+          <span>Logros</span>
+        </div>
+      </div>
+
+      <!-- Bloque: Fundamentos -->
+      <div class="nav-group" id="navModulesFund">
+        <div class="nav-title">🧱 Fundamentos</div>
+      </div>
+
+      <!-- Bloque: Componentes -->
+      <div class="nav-group" id="navModulesComp">
+        <div class="nav-title">⚙️ Componentes</div>
+      </div>
+
+      <!-- Bloque: Sistema -->
+      <div class="nav-group" id="navModulesSys">
+        <div class="nav-title">💻 Sistema y Software</div>
+      </div>
+
+      <!-- Bloque: Avanzado -->
+      <div class="nav-group" id="navModulesAdv">
+        <div class="nav-title">🚀 Avanzado y Práctico</div>
+      </div>
+
+      <!-- Bloque: Laboratorio -->
+      <div class="nav-group">
+        <div class="nav-title">⚗️ Zona experimental</div>
+        <div class="nav-item" data-route="lab">
+          <span class="nav-item-icon">🧪</span>
+          <span>Laboratorio 2026</span>
+        </div>
+        <div class="nav-item" data-route="flashcards">
+          <span class="nav-item-icon">🃏</span>
+          <span>Flashcards</span>
+        </div>
+        <div class="nav-item" data-route="bossfight">
+          <span class="nav-item-icon">⚔️</span>
+          <span>Reto final</span>
+        </div>
+      </div>
+
+      <!-- Bloque: Simuladores -->
+      <div class="nav-group">
+        <div class="nav-title">🎮 Simuladores</div>
+        <div class="nav-item" data-route="pcbuilder">
+          <span class="nav-item-icon">🏗</span>
+          <span>PC Builder</span>
+        </div>
+        <div class="nav-item" data-route="incidences">
+          <span class="nav-item-icon">🛠</span>
+          <span>Incidencias</span>
+        </div>
+      </div>
+
+      <!-- Reset -->
+      <div class="nav-group">
+        <div class="nav-item" id="resetBtn" style="color: var(--danger);">
+          <span class="nav-item-icon">🗑</span>
+          <span>Reiniciar progreso</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+      <!-- El contenido se renderiza con JS -->
+    </main>
+  </div>
+
+  <!-- Toasts -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-icon" id="modalIcon">🎉</div>
+      <h2 id="modalTitle">¡Bien hecho!</h2>
+      <p id="modalBody"></p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="modalOk">Continuar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data/content.js"></script>
+  <script src="data/content2.js"></script>
+  <script src="data/content3.js"></script>
+  <script src="data/content4.js"></script>
+  <script src="data/exercises.js"></script>
+  <script src="data/lab.js"></script>
+  <script src="data/pcbuilder.js"></script>
+  <script src="data/incidences.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pcbuilder.js"></script>
+  <script src="js/incidences.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
